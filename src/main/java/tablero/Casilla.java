@@ -7,12 +7,22 @@ public class Casilla {
     private Pieza pieza;
     private int numero;
     private String color;
+    private Boolean ocupada;
 
     public Casilla(String nombre, Pieza pieza, int numero, String color) {
         this.nombre = nombre;
         this.pieza = pieza;
         this.numero = numero;
         this.color = color;
+        ocupar();
+    }
+
+    public void ocupar() {
+        if (pieza != null) {
+            this.ocupada = true;
+        }else {
+            this.ocupada = false;
+        }
     }
 
     public String getNombre() {
@@ -45,5 +55,13 @@ public class Casilla {
 
     public void setNumero(int numero) {
         this.numero = numero;
+    }
+
+    public Boolean getOcupada() {
+        return ocupada;
+    }
+
+    public void setOcupada(Boolean ocupada) {
+        this.ocupada = ocupada;
     }
 }

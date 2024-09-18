@@ -51,32 +51,64 @@ public class Tablero {
             String posicion;
             posicion = ""+letra + i;
             if(i == 1 || i == 6){
-                Peon peon;
-                if(i == 1){
-                    peon = new Peon("P"+posicion,posicion, "Blanco");
-                }else {
-                    peon = new Peon("P"+posicion,posicion, "Negro");
-                }
-                return peon;
+                return crearPeon(i,letra,posicion);
             } else if (((i == 0)||(i == 7)) && ((letra == 'A') || (letra == 'H'))) {
-                Torre torre;
-                if(i == 0 || i == 7){
-                    torre = new Torre("T"+posicion,posicion, "Blanco");
-                }else {
-                    torre = new Torre("T"+posicion,posicion, "Negro");
-                }
-                return torre;
+                return crearTorre(i,letra,posicion);
             } else if (((i == 0)||(i == 7)) && ((letra == 'B') || (letra == 'G'))) {
-                Caballo caballo;
-                if(i == 0 || i == 7){
-                    caballo = new Caballo("C"+posicion,posicion, "Blanco");
-                }else {
-                    caballo = new Caballo("C"+posicion,posicion, "Negro");
-                }
-                return caballo;
+                return crearCaballo(i,letra,posicion);
+            } else if (((i == 0)||(i == 7)) && ((letra == 'C') || (letra == 'F'))) {
+                return crearAlfil(i,letra,posicion);
             }
         }
         return pz;
+    }
+
+    public Peon crearPeon(int i, char letra, String posicion){
+        Peon peon;
+        if(i == 1){
+            peon = new Peon("P"+posicion,posicion, "Blanco");
+        }else {
+            peon = new Peon("P"+posicion,posicion, "Negro");
+        }
+        return peon;
+    }
+
+    public Torre crearTorre(int i, char letra, String posicion){
+        Torre torre;
+        if(i == 0){
+            torre = new Torre("T"+posicion,posicion, "Blanco");
+        }else {
+            torre = new Torre("T"+posicion,posicion, "Negro");
+        }
+        return torre;
+    }
+
+    public Caballo crearCaballo(int i, char letra, String posicion){
+        Caballo caballo;
+        if(i == 0){
+            caballo = new Caballo("C"+posicion,posicion, "Blanco");
+        }else {
+            caballo = new Caballo("C"+posicion,posicion, "Negro");
+        }
+        return caballo;
+    }
+
+    public Alfil crearAlfil(int i, char letra, String posicion){
+        Alfil alfil;
+        if(i == 0){
+            if (letra == 'C') {
+                alfil = new Alfil("A"+posicion,posicion,"Blanco","N");
+            }else{
+                alfil = new Alfil("A"+posicion,posicion,"Blanco","B");
+            }
+        } else{
+            if (letra == 'C') {
+                alfil = new Alfil("A"+posicion,posicion,"Negro","B");
+            }else{
+                alfil = new Alfil("A"+posicion,posicion,"Negro","N");
+            }
+        }
+        return alfil;
     }
 
     public void imprimir(){
